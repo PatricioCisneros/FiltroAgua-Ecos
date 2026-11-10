@@ -28,9 +28,41 @@ if (menuButton && siteNav) {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
       closeMenu();
       menuButton.focus();
     }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(min-width: 681px)").matches) {
+      closeMenu();
+    }
+  });
+}
+
+if (
+  "IntersectionObserver" in window &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  const revealItems = document.querySelectorAll(
+    ".problem, .product-showcase, .stage-card, .benefit-card, .application-card, .why, .evidence-card, .cta"
+  );
+  const observer = new IntersectionObserver(
+    (entries, activeObserver) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      }
+    },
+    { threshold: 0.12 }
+  );
+
+  document.documentElement.classList.add("reveal-ready");
+  revealItems.forEach((item) => {
+    item.classList.add("reveal");
+    observer.observe(item);
   });
 }
