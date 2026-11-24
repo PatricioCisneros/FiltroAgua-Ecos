@@ -46,7 +46,7 @@ if (
   !window.matchMedia("(prefers-reduced-motion: reduce)").matches
 ) {
   const revealItems = document.querySelectorAll(
-    ".problem, .product-showcase, .stage-card, .benefit-card, .application-card, .why, .evidence-card, .cta"
+    ".problem, .product-showcase, .stage-card, .benefit-card, .application-card, .economic-card, .why, .cta"
   );
   const observer = new IntersectionObserver(
     (entries, activeObserver) => {
