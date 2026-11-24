@@ -860,14 +860,6 @@ p {
   white-space: nowrap;
 }
 
-.cost-pending {
-  flex: 0 0 auto;
-  color: #77877e;
-  font-size: 10px;
-  font-weight: 650;
-  text-align: right;
-}
-
 .economic-total {
   display: flex;
   justify-content: space-between;
